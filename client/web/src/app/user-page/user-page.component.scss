@@ -1,0 +1,41 @@
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(237, 100, 100);
+  width: 80%;
+  color: white;
+  padding: 10px;
+}
+
+.user-profile-container {
+  max-width: 700px;
+  margin: auto;
+  padding: 24px;
+}
+
+.user-info p {
+  margin: 4px 0;
+}
+
+.motivation-box {
+  background: #f0f8ff;
+  border-left: 4px solid #1976d2;
+  padding: 12px;
+  margin: 20px 0;
+}
+
+.review-section {
+  margin-top: 20px;
+}
+
+.review-field {
+  width: 100%;
+  margin-bottom: 12px;
+}

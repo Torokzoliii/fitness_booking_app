@@ -1,0 +1,43 @@
+<div style="display: flex; flex-direction: column; overflow-y: auto; max-height: 90vh; padding: 20px;"><div style="align-items: center; margin: 30px">
+<h1>{{ user.name }}'s Profile</h1>
+
+  <div class="user-info">
+    <p><strong>Name:</strong> {{ user.name }}</p>
+    <p><strong>Email:</strong> {{ user.email }}</p>
+  </div>
+
+  <div class="motivation-box">
+    <p>You're doing amazing, {{ user.name }}!</p>
+    <p>Keep pushing forward and make every session count!</p>
+    <p>You’ve already participated in 13 classes.</p>
+  </div>
+
+  <div class="review-section">
+    <h3>Leave a review</h3>
+
+    <mat-form-field class="review-field" appearance="fill">
+      <mat-label>Review a Group</mat-label>
+      <textarea matInput [(ngModel)]="groupReview" rows="3"></textarea>
+    </mat-form-field>
+  </div>
+
+  <div class="buttons">
+    <button type="button" style="background-color: #1976d2; margin-bottom: 30px" (click)="submitGroupReview()">Submit Group Review</button>
+  </div>
+
+  <div class="review-section">
+    <mat-form-field class="review-field" appearance="fill">
+      <mat-label>Review a Trainer</mat-label>
+      <textarea matInput [(ngModel)]="trainerReview" rows="3"></textarea>
+    </mat-form-field>
+  </div>
+
+  <div class="buttons">
+    <button type="button" style="background-color: #1976d2" (click)="submitTrainerReview()">Submit Trainer Review</button>
+  </div>
+
+  <div class="buttons" style="margin-top: 30px">
+    <button type="button" style="background-color: #3b7832" (click)="backToMyBooking()">Back to My Bookings</button>
+  </div>
+</div>
+ß</div>

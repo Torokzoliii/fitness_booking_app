@@ -1,0 +1,86 @@
+<div style="display: flex; flex-direction: column; overflow-y: auto; max-height: 90vh; padding: 20px;"><div style="align-items: center; margin: 30px">
+  <h2>Welcome to our fitness club!</h2>
+  <h5>Trainers:</h5>
+  <div class="table-container" *ngIf="trainers && trainers.length; else noTrainersTemplate">
+    <table mat-table [dataSource]="trainers" class="mat-elevation-z8">
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="bio">
+        <th mat-header-cell *matHeaderCellDef>Bio</th>
+        <td mat-cell *matCellDef="let element">{{ element.bio }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="specialties">
+        <th mat-header-cell *matHeaderCellDef>Specialties</th>
+        <td mat-cell *matCellDef="let element">
+          <div *ngFor="let s of element.specialties">
+            {{ s }}
+          </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="columnsTrainer"></tr>
+      <tr mat-row *matRowDef="let row; columns: columnsTrainer"></tr>
+    </table>
+  </div>
+  <ng-template #noTrainersTemplate>
+    <p>No trainers available.</p>
+  </ng-template>
+  <h5>Groups:</h5>
+  <div class="table-container" *ngIf="groups && groups.length; else noGroupsTemplate">
+    <table mat-table [dataSource]="groups" class="mat-elevation-z8">
+
+      <!-- Name -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element"> {{ element.name }} </td>
+      </ng-container>
+
+      <!-- Description -->
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef> Description </th>
+        <td mat-cell *matCellDef="let element"> {{ element.description }} </td>
+      </ng-container>
+
+      <!-- Trainer -->
+      <ng-container matColumnDef="trainer">
+        <th mat-header-cell *matHeaderCellDef> Trainer </th>
+        <td mat-cell *matCellDef="let element"> {{ element.trainerId?.name }} </td>
+      </ng-container>
+
+      <!-- Capacity Info -->
+      <ng-container matColumnDef="spotsLeft">
+        <th mat-header-cell *matHeaderCellDef> Spots Left </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.capacity - (element.bookings?.length || 0) }}
+        </td>
+      </ng-container>
+
+      <!-- Schedule -->
+      <ng-container matColumnDef="schedule">
+        <th mat-header-cell *matHeaderCellDef> Schedule </th>
+        <td mat-cell *matCellDef="let element">
+          <div *ngFor="let s of element.schedule">
+            {{ s.day }} at {{ s.time }}
+          </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="columnsGroup"></tr>
+      <tr mat-row *matRowDef="let row; columns: columnsGroup"></tr>
+    </table>
+  </div>
+
+  <ng-template #noGroupsTemplate>
+    <p>No groups available.</p>
+  </ng-template>
+
+  <div class="buttons" style="margin-bottom: 30px">
+    <button type="button" style="background-color: cadetblue" (click)="loginOrSignup()">Login/Sign Up</button>
+  </div>
+</div>
+</div>
